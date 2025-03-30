@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds54br1njohoe"]
+
+[ext_resource type="Script" path="res://player/inventory/button.gd" id="1_ju8e7"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8j3lc"]
+size = Vector2(16, 16)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_d7hny"]
+size = Vector2(16, 16)
+
+[node name="Button" type="Button"]
+offset_right = 24.0
+offset_bottom = 24.0
+icon = SubResource("PlaceholderTexture2D_8j3lc")
+script = ExtResource("1_ju8e7")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 20.0
+offset_bottom = 20.0
+texture = SubResource("PlaceholderTexture2D_d7hny")

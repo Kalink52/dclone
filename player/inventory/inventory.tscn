@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtx5avfa3atxo"]
+
+[ext_resource type="Script" path="res://player/inventory/inventory.gd" id="1_qsbnb"]
+[ext_resource type="Script" path="res://player/inventory/tool_tip.gd" id="2_kjcv6"]
+[ext_resource type="PackedScene" uid="uid://ds54br1njohoe" path="res://player/inventory/slot.tscn" id="2_wu7sb"]
+
+[node name="InventoryUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 733.0
+offset_top = 8.0
+offset_right = 1129.0
+offset_bottom = 647.0
+script = ExtResource("1_qsbnb")
+slot_scene = ExtResource("2_wu7sb")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 377.0
+offset_right = 351.0
+offset_bottom = 534.0
+theme_override_constants/h_separation = -3
+theme_override_constants/v_separation = -5
+columns = 18
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 174.0
+offset_top = 524.0
+offset_right = 179.0
+offset_bottom = 547.0
+
+[node name="GoldIcon" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "gold
+"
+
+[node name="GoldAmount" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+
+[node name="ToolTip" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 148.0
+offset_top = -65.0
+offset_right = 188.0
+offset_bottom = -25.0
+script = ExtResource("2_kjcv6")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 41.0
+offset_bottom = 23.0
