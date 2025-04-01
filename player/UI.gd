@@ -11,7 +11,7 @@ var max_health = 100
 var current_health = 100
 
 func _ready():
-	print(spell_bars)
+	#print(UI: spell_bars)
 	update_health_ui()
 	reset_spell_cooldowns()
 

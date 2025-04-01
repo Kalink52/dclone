@@ -18,6 +18,8 @@
 script = ExtResource("1_aktdw")
 inventory = NodePath("InventoryUI")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1.90735e-06, 1.90735e-06)
 scale = Vector2(0.15625, 0.15625)
@@ -41,12 +43,11 @@ fireball_scene = ExtResource("7_alx6w")
 blizzard_scene = ExtResource("9_kkjin")
 teleport_effect_scene = ExtResource("8_drb45")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="UI" parent="." instance=ExtResource("10_qqous")]
+mouse_filter = 1
 
 [node name="InventoryUI" parent="." instance=ExtResource("11_v0nap")]
-offset_left = 102.0
-offset_top = -283.0
-offset_right = 406.0
-offset_bottom = 258.0
+offset_left = 181.0
+offset_top = -325.0
+offset_right = 593.0
+offset_bottom = 325.0

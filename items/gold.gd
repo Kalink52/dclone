@@ -8,6 +8,4 @@ func _ready():
 	##icon = preload("res://path_to_sword_icon.png")  # Add the sword icon path
 	description = "BUY SOMETHING"  # Description of the sword
 	
-func _process(delta: float):
-	print($CollisionShape2D.disabled)
 	

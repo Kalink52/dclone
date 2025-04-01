@@ -12,7 +12,6 @@ func _ready():
 	connect("body_entered", _on_body_entered)
 	
 func _on_body_entered(body):
-	print(body)
 	if body.name == "Player":  # Ensure only the player picks up items
 		body.collect_loot(self)
 		queue_free()  # Remove loot after pickup

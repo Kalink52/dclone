@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://be78myaxy67qy"]
+
+[ext_resource type="Script" path="res://item2/InventoryItem.gd" id="1_tqvbc"]
+
+[node name="InventoryItem" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_tqvbc")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 5

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbhy0ael4gwg0"]
+
+[ext_resource type="Script" path="res://item2/ItemScript.gd" id="1_gukwy"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7kx3c"]
+
+[node name="Item" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_gukwy")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("PlaceholderTexture2D_7kx3c")

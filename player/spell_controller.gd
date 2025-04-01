@@ -3,7 +3,7 @@ extends Node2D
 @export var fireball_scene : PackedScene  
 @export var blizzard_scene : PackedScene  
 @export var teleport_effect_scene : PackedScene  
-@onready var ui = get_tree().current_scene.get_node("./player/UI")
+@onready var ui = get_tree().current_scene.get_node("./Player/UI")
 var movement_controller : MovementController
 var player  # Reference to the player
 

@@ -3,6 +3,9 @@ class_name Playerbase
 
 @export var inventory: Node  # Drag `Inventory` node in Inspector
 
+func _ready():
+		add_to_group("player")  # Ensures the player is always in the group
+		
 func collect_loot(loot):
 	if loot.item_type == "Gold":
 		inventory.add_gold(loot.amount)
