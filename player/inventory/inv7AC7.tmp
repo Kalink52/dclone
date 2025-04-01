@@ -13,6 +13,9 @@ offset_right = 1128.0
 offset_bottom = 659.0
 script = ExtResource("1_qsbnb")
 slot_scene = ExtResource("2_wu7sb")
+GRID_SIZE = null
+inventory_width = null
+inventory_height = null
 
 [node name="background" type="ColorRect" parent="."]
 layout_mode = 0

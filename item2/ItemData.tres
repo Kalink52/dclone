@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_gxx7g")
 name = "Unnamed Item"
-width = 4
-height = 4
+width = 1
+height = 1
 texture = ExtResource("2_3rwxh")
