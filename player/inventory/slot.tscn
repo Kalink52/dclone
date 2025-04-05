@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://player/inventory/button.gd" id="1_ju8e7"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_d7hny"]
-size = Vector2(15, 15)
+size = Vector2(16, 15)
 
 [node name="Slot" type="Control"]
 custom_minimum_size = Vector2(16, 16)
@@ -12,6 +12,17 @@ anchors_preset = 0
 offset_right = 17.0
 offset_bottom = 17.0
 script = ExtResource("1_ju8e7")
+
+[node name="backupTexture" type="TextureRect" parent="."]
+modulate = Color(0, 0.775847, 0.777257, 1)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 16.0
+offset_bottom = 16.0
+texture = SubResource("PlaceholderTexture2D_d7hny")
+expand_mode = 2
 
 [node name="Texture" type="TextureRect" parent="."]
 layout_mode = 1
