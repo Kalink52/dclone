@@ -1,9 +1,48 @@
 extends Control
-class_name WorldItem
 
-@export var item_data: ItemData  # Assign the resource in the editor
+@export var data: ItemData
+@onready var icon = $TextureRect
+@export var public_scale = 1
 
-func _ready():
-	if item_data:
-		$TextureRect.texture = item_data.texture
-		size = Vector2(item_data.width * 32, item_data.height * 32)  # Adjust for grid
+@export var slot_size := 32
+var is_dragging := false
+var drag_offset := Vector2.ZERO
+
+func _ready(): 
+	if data:
+		icon.texture = data.icon
+		scale = Vector2(data.height, data.width) * public_scale
+
+func _gui_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				# Begin drag
+				is_dragging = true
+				drag_offset = get_global_mouse_position() - global_position
+				#raise()  # bring item on top of other UI
+			else:
+				# Drop item
+				is_dragging = false
+				snap_to_grid()
+
+func _process(delta):
+	if is_dragging:
+		global_position = get_global_mouse_position() - drag_offset
+func snap_to_grid():    
+	var parent = get_parent().get_parent()
+	if parent.has_method("get_grid_origin") and parent.has_method("_slot_size") and parent.has_method("get_slot_spacing"):
+		var grid_origin = parent.get_grid_origin()
+		var spacing = parent.get_slot_spacing()
+		var slot_size = parent.slot_size
+		var cell_size = Vector2(slot_size, slot_size) + spacing
+		
+		var local_pos = global_position - grid_origin
+		var grid_x = int(local_pos.x / cell_size.x)
+		var grid_y = int(local_pos.y / cell_size.y)
+		var snapped_pos = grid_origin + Vector2(grid_x, grid_y) * cell_size
+
+		global_position = snapped_pos
+		print("item:",position)
+	else: 
+		print("ItemScript: something went wrong")

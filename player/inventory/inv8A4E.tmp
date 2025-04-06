@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dtx5avfa3atxo"]
 
-[ext_resource type="PackedScene" uid="uid://rw6erlb2ly2d" path="res://inventory_ui.tscn" id="2_ajnjo"]
+[ext_resource type="Script" path="res://player/inventory/inventoryUI.gd" id="1_adbed"]
 [ext_resource type="Script" path="res://player/inventory/tool_tip.gd" id="2_kjcv6"]
 [ext_resource type="Script" path="res://player/inventory/drag_handler.gd" id="3_rf2px"]
 
@@ -14,21 +14,38 @@ offset_bottom = 659.0
 
 [node name="background" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = -42.0
-offset_top = -4.0
-offset_right = 420.0
-offset_bottom = 640.0
+offset_left = -40.0
+offset_top = -2.0
+offset_right = 422.0
+offset_bottom = 642.0
 color = Color(0, 0, 0, 1)
 
 [node name="DragManager" type="Node" parent="."]
 script = ExtResource("3_rf2px")
 
-[node name="InventoryUI" parent="." instance=ExtResource("2_ajnjo")]
+[node name="InventoryUI" type="Control" parent="."]
 layout_mode = 1
-offset_left = -24.0
-offset_top = 256.0
-offset_right = -24.0
-offset_bottom = 256.0
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -3.0
+offset_right = -23.0
+offset_bottom = -3.0
+grow_vertical = 2
+script = ExtResource("1_adbed")
+columns = null
+rows = null
+slot_size = null
+
+[node name="GridContainer" type="GridContainer" parent="InventoryUI"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+offset_right = 415.0
+offset_bottom = 157.0
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+columns = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2

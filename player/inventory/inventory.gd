@@ -7,7 +7,7 @@ extends Control
 @export var inventory_height: int = 6
 var gold_amount: int = 0 # Store gold count
 
-@onready var grid = $GridContainer
+@onready var grid = $GridContainer.new()
 @onready var gold_label = $HBoxContainer/GoldAmount # Adjust path if needed
 
 var inventory_grid = [] # 2D array storing items

@@ -6,7 +6,6 @@
 size = Vector2(16, 15)
 
 [node name="Slot" type="Control"]
-custom_minimum_size = Vector2(16, 16)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 17.0

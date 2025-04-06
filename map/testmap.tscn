@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=4 uid="uid://6g5tc7oixqp0"]
+[gd_scene load_steps=9 format=4 uid="uid://6g5tc7oixqp0"]
 
 [ext_resource type="Texture2D" uid="uid://qejk8q4u26jk" path="res://resourcemaps/ruin_floor_tiles_64x32.png" id="1_48hxf"]
 [ext_resource type="Texture2D" uid="uid://be648xscj77a3" path="res://resourcemaps/ruin_tiles_64x32.png" id="2_ka1ew"]
 [ext_resource type="PackedScene" uid="uid://cm3fehi026x6j" path="res://player/player_base.tscn" id="2_pnm68"]
-[ext_resource type="PackedScene" uid="uid://edicqvgvg1s5" path="res://item2/WorldItem.tscn" id="6_361mo"]
 [ext_resource type="PackedScene" uid="uid://c6x380c1utqnh" path="res://items/Gold.tscn" id="6_cmhcj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hwsgi"]
@@ -101,5 +100,3 @@ position = Vector2(4, 1)
 
 [node name="Gold" parent="." instance=ExtResource("6_cmhcj")]
 position = Vector2(-126, 16)
-
-[node name="WorldItem" parent="." instance=ExtResource("6_361mo")]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://yf8ekkkrqm2m"]
+
+[ext_resource type="Script" path="res://player/inventory/slotpanel.gd" id="1_5laww"]
+
+[node name="Panel" type="Panel"]
+script = ExtResource("1_5laww")

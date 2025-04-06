@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://cn7y4p82tsik2"]
+
+[ext_resource type="Script" path="res://item2/ItemData.gd" id="1_3n1mx"]
+[ext_resource type="Texture2D" uid="uid://ccy36f4361d06" path="res://icon.svg" id="2_rry0r"]
+
+[resource]
+script = ExtResource("1_3n1mx")
+name = "shield"
+width = 2
+height = 2
+icon = ExtResource("2_rry0r")
+grid_position = Vector2i(0, 0)
+texture = ExtResource("2_rry0r")
