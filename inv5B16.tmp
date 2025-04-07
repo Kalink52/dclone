@@ -7,6 +7,9 @@
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_4b3te")
+columns = null
+rows = null
+slot_size = null
 
 [node name="GridContainer" type="GridContainer" parent="."]
 custom_minimum_size = Vector2(16, 16)
@@ -22,12 +25,12 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="DragManager" type="Node" parent="."]
-script = ExtResource("2_voqe3")
-
 [node name="DragHighlight" type="ColorRect" parent="."]
 visible = false
 modulate = Color(0.850827, 0.909905, 2.69532e-06, 1)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="DragManager" type="Node" parent="."]
+script = ExtResource("2_voqe3")

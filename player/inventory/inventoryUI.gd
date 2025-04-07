@@ -12,16 +12,21 @@ var ItemScene = preload("res://item2/Item.tscn")
 var SwordData = preload("res://item2/testitems/sword.tres")
 var ShieldData = preload("res://item2/testitems/shield.tres")
 
+var dragging_item: Control = null
+#@onready var drag_highlight = $DragHighlight
+
 func _ready():
 	setup_grid()
 	populate_slots()
 	
 	spawn_item(SwordData, Vector2i(0, 0))
-	#spawn_item(ShieldData, Vector2i(4, 0))
-	#spawn_item(SwordData, Vector2i(11, 0))
+	spawn_item(ShieldData, Vector2i(4, 0))
+	spawn_item(SwordData, Vector2i(11, 0))
+
+func _process(delta: float) -> void:
+	if dragging_item !=null:
+		highlighting(dragging_item)
 	
-
-
 
 func setup_grid():
 	grid.columns = columns
@@ -77,8 +82,9 @@ func get_cell_position(grid_x: int, grid_y: int) -> Vector2:
 	var cell_size = Vector2(slot_size, slot_size) + spacing
 	return get_grid_origin() + Vector2(grid_x, grid_y) * cell_size
 
-func highlighting(item: ItemData):
+func highlighting(item_instance):
 	#if dragging_item:
+	var item = item_instance.data
 	var mouse_pos = get_viewport().get_mouse_position()
 	var local = mouse_pos - get_grid_origin()
 	var spacing = get_slot_spacing()
@@ -87,16 +93,50 @@ func highlighting(item: ItemData):
 	var grid_y = int(local.y / cell_size.y)
 	update_drag_highlight(Vector2i(grid_x, grid_y), Vector2i(item.height, item.width))
 
-	
-func update_drag_highlight(grid_pos: Vector2i, item_size: Vector2i):
-	var spacing = get_slot_spacing()
-	var cell_size = Vector2(slot_size, slot_size) + spacing
-	var top_left = get_grid_origin() + Vector2(grid_pos) * cell_size
-
-	drag_highlight.global_position = top_left
-	drag_highlight.size = cell_size * Vector2(item_size)
-	drag_highlight.visible = true
+	#var spacing = get_slot_spacing()
+#func update_drag_highlight(grid_pos: Vector2i, item_size: Vector2i):
+	#var cell_size = Vector2(slot_size, slot_size) + spacing
+	#var top_left = get_grid_origin() + Vector2(grid_pos) * cell_size
+#
+	#drag_highlight.global_position = top_left
+	#drag_highlight.size = cell_size * Vector2(item_size)
+	#drag_highlight.visible = true
 
 func hide_drag_highlight():
-	
 	drag_highlight.visible = false
+
+func begin_drag(item: Control):
+	dragging_item = item
+	highlighting(item)
+	drag_highlight.visible = true
+
+func update_drag_highlight(grid_pos: Vector2i, size: Vector2i):
+	if dragging_item:
+		var spacing = get_slot_spacing()
+		var cell_size = Vector2(slot_size, slot_size) + spacing
+		var pos  = get_grid_origin() + Vector2(grid_pos) * cell_size
+		drag_highlight.global_position = pos
+		drag_highlight.size = size * _slot_size()
+
+func end_drag():
+	snap_to_grid(dragging_item)
+	dragging_item = null
+	drag_highlight.visible = false
+
+func snap_to_grid(item):    
+	#var parent = get_parent().get_parent()
+	#if parent.has_method("get_grid_origin") and parent.has_method("_slot_size") and parent.has_method("get_slot_spacing"):
+	var grid_origin = get_grid_origin()
+	var spacing = get_slot_spacing()
+	var slot_size = slot_size
+	var cell_size = Vector2(slot_size, slot_size) + spacing
+	
+	var local_pos = item.global_position - grid_origin
+	var grid_x = int(local_pos.x / cell_size.x)
+	var grid_y = int(local_pos.y / cell_size.y)
+	var snapped_pos = grid_origin + Vector2(grid_x, grid_y) * cell_size
+
+	item.global_position = snapped_pos
+	print("item:",position)
+	#else: 
+	#print("ItemScript: something went wrong")
