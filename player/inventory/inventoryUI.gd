@@ -3,6 +3,7 @@ extends Control
 @export var columns := 12
 @export var rows := 6
 @export var slot_size := 32
+@onready var drag_highlight = $DragHighlight
 @onready var slotimgscale := 1
 @onready var grid = $GridContainer
 @onready var items_layer = $ItemsLayer
@@ -16,8 +17,8 @@ func _ready():
 	populate_slots()
 	
 	spawn_item(SwordData, Vector2i(0, 0))
-	spawn_item(ShieldData, Vector2i(4, 0))
-	spawn_item(SwordData, Vector2i(11, 0))
+	#spawn_item(ShieldData, Vector2i(4, 0))
+	#spawn_item(SwordData, Vector2i(11, 0))
 	
 
 
@@ -75,3 +76,27 @@ func get_cell_position(grid_x: int, grid_y: int) -> Vector2:
 	var spacing = get_slot_spacing()
 	var cell_size = Vector2(slot_size, slot_size) + spacing
 	return get_grid_origin() + Vector2(grid_x, grid_y) * cell_size
+
+func highlighting(item: ItemData):
+	#if dragging_item:
+	var mouse_pos = get_viewport().get_mouse_position()
+	var local = mouse_pos - get_grid_origin()
+	var spacing = get_slot_spacing()
+	var cell_size = Vector2(slot_size, slot_size) + spacing
+	var grid_x = int(local.x / cell_size.x)
+	var grid_y = int(local.y / cell_size.y)
+	update_drag_highlight(Vector2i(grid_x, grid_y), Vector2i(item.height, item.width))
+
+	
+func update_drag_highlight(grid_pos: Vector2i, item_size: Vector2i):
+	var spacing = get_slot_spacing()
+	var cell_size = Vector2(slot_size, slot_size) + spacing
+	var top_left = get_grid_origin() + Vector2(grid_pos) * cell_size
+
+	drag_highlight.global_position = top_left
+	drag_highlight.size = cell_size * Vector2(item_size)
+	drag_highlight.visible = true
+
+func hide_drag_highlight():
+	
+	drag_highlight.visible = false
